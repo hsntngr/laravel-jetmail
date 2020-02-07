@@ -22,8 +22,8 @@ return [
      *
      */
     'from' => [
-        'address' => 'hotelmaster@posta.jetmail.com.tr',
-        'name' => 'Hotel Master',
+        'address' => 'laravel@posta.jetmail.com.tr',
+        'name' => 'Laravel',
     ],
 
     /**

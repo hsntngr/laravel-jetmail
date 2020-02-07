@@ -45,6 +45,7 @@ class JetMail
             ->setAuthentication($apiUser)
             ->setSendMailInput($mail);
 
+
         return JetMailClient::create()
             ->initiate()
             ->setPayload($payload)

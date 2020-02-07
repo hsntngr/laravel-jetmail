@@ -78,7 +78,7 @@ class JetMailClient
     public function send()
     {
         $response = $this->client->SendMail($this->payload);
-        dd($response);
+
         return Response::create($response->SendMailResult);
     }
 }
