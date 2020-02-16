@@ -25,13 +25,20 @@ class JetMailClient
      */
     protected $status;
 
+    /**
+     * JetMailClient sınıfını örnekler
+     *
+     * @return JetMailClient
+     */
     public static function create()
     {
         return new static();
     }
 
     /**
-     * @return $this
+     * Api bağlantısını gerçekleştirir.
+     *
+     * @return JetMailClient
      * @throws \SoapFault
      */
     public function initiate()
@@ -64,6 +71,9 @@ class JetMailClient
     }
 
     /**
+     * Kullanıcı ve kimlik bilgilerini
+     * barından istek gövdesi
+     *
      * @param mixed $payload
      * @return JetMailClient
      */
@@ -75,6 +85,11 @@ class JetMailClient
     }
 
 
+    /**
+     * Kimlik bilgileri ve kullanıcı bilgilerinden
+     * oluşan mail isteği gönderir.
+     * @return Response
+     */
     public function send()
     {
         $response = $this->client->SendMail($this->payload);

@@ -9,11 +9,28 @@ use Illuminate\Mail\Mailable;
 
 class JetMail
 {
-    public $recipent;
+    /**
+     * @var array
+     */
+    public $recipient = [];
 
     public function to($address)
     {
-        $this->recipent = $address;
+        if (is_array($address)) {
+            $this->recipient = $address;
+        }
+
+        if (is_string($address)) {
+            array_push($this->recipient, $address);
+        }
+
+        if (is_object($address)) {
+            if ($address instanceof \ArrayAccess) {
+                $this->recipient = array_merge($this->recipient,  (array) $address);
+            } else {
+                array_push($this->recipient, (string) $address);
+            }
+        }
 
         return $this;
     }
@@ -24,8 +41,8 @@ class JetMail
             $mail = RegularMail::buildFrom($mail);
         }
 
-        if ($this->recipent) {
-            $mail->to($this->recipent);
+        if ($this->recipient) {
+            $mail->to($this->recipient);
         }
 
         $this->prepare($mail);

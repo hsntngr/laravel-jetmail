@@ -6,10 +6,22 @@ namespace Hsntngr\JetMail;
 
 class ApiUser
 {
+    /**
+     * Api token
+     * @var string
+     */
     public $Token;
 
+    /**
+     * Api username
+     * @var string
+     */
     public $UserName;
 
+    /**
+     * ApiUser sınıfını örnekler
+     * @return ApiUser
+     */
     public static function create()
     {
         return new static();
